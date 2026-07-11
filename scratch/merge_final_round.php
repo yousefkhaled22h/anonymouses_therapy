@@ -1,0 +1,137 @@
+<?php
+// scratch/merge_final_round.php
+
+$projectRoot = __DIR__ . '/..';
+$arJsonPath = $projectRoot . '/messages/ar.json';
+
+// Load existing translations
+$arTranslations = [];
+if (file_exists($arJsonPath)) {
+    $arTranslations = json_decode(file_get_contents($arJsonPath), true) ?: [];
+}
+
+// Final round translations mapping
+$roundTranslations = [
+    "Reset Password" => "إعادة تعيين كلمة المرور",
+    "Enter your email below and we'll send you a secure link to reset your password." => "أدخل بريدك الإلكتروني أدناه وسنرسل لك رابطاً آمناً لإعادة تعيين كلمة المرور.",
+    "Send Reset Link" => "إرسال رابط إعادة التعيين",
+    "Invalid Token" => "رمز غير صالح",
+    "This password reset link is invalid or has expired." => "رابط إعادة تعيين كلمة المرور هذا غير صالح أو انتهت صلاحيته.",
+    "Request a new link" => "طلب رابط جديد",
+    "Create New Password" => "إنشاء كلمة مرور جديدة",
+    "Please enter your new password below." => "يرجى إدخال كلمة المرور الجديدة أدناه.",
+    "Confirm New Password" => "تأكيد كلمة المرور الجديدة",
+    "Choose your journey with anonymous and professional support" => "اختر رحلتك مع دعم مهني وسرية تامة",
+    "Seeking mental health support and guidance." => "تبحث عن دعم وتوجيه للصحة النفسية.",
+    "I'm a Client" => "أنا عميل",
+    "Licensed professional providing therapy." => "مهني مرخص يقدم العلاج.",
+    "I'm a Therapist" => "أنا معالج نفسي",
+    "Community support helper and advocate." => "مساعد ومدافع عن دعم المجتمع.",
+    "I'm a Volunteer" => "أنا متطوع",
+    "All roles maintain complete anonymity and privacy" => "تحافظ جميع الأدوار على السرية التامة والخصوصية",
+    "Safe Haven Logo" => "شعار الملاذ الآمن",
+    "How would you like to" => "كيف ترغب في",
+    "connect?" => "التواصل؟",
+    "Choose the session format that feels most comfortable for you." => "اختر شكل الجلسة الذي يجعلك تشعر بالراحة التامة.",
+    "Flexible communication. Talk freely or message your therapist in a private, secure environment at your pace." => "تواصل مرن. تحدث بحرية أو راسل معالجك في بيئة خاصة وآمنة حسب وتيرتك الخاصة.",
+    "Video Session" => "جلسة فيديو",
+    "Session Duration" => "مدة الجلسة",
+    "Continue" => "استمرار",
+    "Calendar" => "التقويم",
+    "Weekly List" => "القائمة الأسبوعية",
+    "Booking Summary" => "ملخص الحجز",
+    "Session Type" => "نوع الجلسة",
+    "Duration" => "المدة",
+    "Time" => "الوقت",
+    "Session Price" => "سعر الجلسة",
+    "Safe Haven Service Fee" => "رسوم خدمة الملاذ الآمن",
+    "Total Investment" => "إجمالي المبلغ",
+    "Your wallet balance:" => "رصيد محفظتك:",
+    "Select Payment Method" => "اختر طريقة الدفع",
+    "InstaPay" => "إنستاباي",
+    "Not available" => "غير متاح",
+    "Full amount of" => "المبلغ الكامل لـ",
+    "Session Booked Successfully!" => "تم حجز الجلسة بنجاح!",
+    "Your therapy session has been confirmed and paid" => "تم تأكيد ودفع رسوم جلستك العلاجية بنجاح",
+    "Session Details" => "تفاصيل الجلسة",
+    "Therapist:" => "المعالج:",
+    "Date:" => "التاريخ:",
+    "Time:" => "الوقت:",
+    "Amount Paid:" => "المبلغ المدفوع:",
+    "Zoom Meeting Details" => "تفاصيل اجتماع زووم",
+    "Meeting ID:" => "معرف الاجتماع:",
+    "Passcode:" => "رمز المرور:",
+    "SH2026 (Embedded in Link)" => "SH2026 (مدمج في الرابط)",
+    "Join Zoom Meeting" => "الانضمام لاجتماع زووم",
+    "Enter Secure Room" => "دخول الغرفة الآمنة",
+    "Important Notes" => "ملاحظات هامة",
+    "Please join the meeting 5 minutes before the scheduled time" => "يرجى الانضمام للاجتماع قبل 5 دقائق من الوقت المحدد",
+    "Make sure you have Zoom installed on your device" => "تأكد من تثبيت تطبيق زووم على جهازك",
+    "Find a quiet, private space for your session" => "ابحث عن مساحة هادئة وخاصة لجلستك",
+    "Have a stable internet connection" => "تأكد من وجود اتصال مستقر بالإنترنت",
+    "Return to Dashboard" => "العودة للوحة التحكم",
+    "pts" => "نقاط",
+    "e.g. Helped a neighbor, cooked a healthy meal..." => "مثال: ساعدت جاراً، طهيت وجبة صحية...",
+    "Avatar" => "الصورة التعبيرية",
+    "Anonymous" => "مجهول الهوية",
+    "Account Type" => "نوع الحساب",
+    "Basic Information" => "المعلومات الأساسية",
+    "Enter your real name" => "أدخل اسمك الحقيقي",
+    "This name is only visible to you. Others will see your alias:" => "هذا الاسم مرئي لك فقط. سيرى الآخرون اسمك المستعار:",
+    "Anonymous (Hidden)" => "مجهول الهوية (مخفي)",
+    "Real Name (Visible)" => "الاسم الحقيقي (ظاهر)",
+    "Avatar & Security" => "الصورة التعبيرية والأمان",
+    "Profile Picture" => "صورة الملف الشخصي",
+    "Account pending approval. You can only view for now." => "الحساب في انتظار الموافقة. يمكنك العرض فقط في الوقت الحالي.",
+    "Posting restricted until account is approved." => "النشر مقيد حتى يتم قبول الحساب.",
+    "Please" => "يرجى",
+    "to join the conversation." => "للانضمام إلى المحادثة.",
+    "P" => "ب",
+    "Get in Touch" => "تواصل معنا",
+    "Whether you have a question about features, pricing, or need technical support, our team is ready to answer all your questions." => "سواء كان لديك سؤال حول الميزات أو الأسعار أو بحاجة إلى دعم فني، فإن فريقنا مستعد للإجابة على جميع أسئلتك.",
+    "Email Us" => "راسلنا إلكترونياً",
+    "Send us a Message" => "أرسل لنا رسالة",
+    "Your Message" => "رسالتك",
+    "Help Us Grow (Optional)" => "ساعدنا على النمو (اختياري)",
+    "Have an idea for a new feature? Let us know!" => "لديك فكرة لميزة جديدة؟ أخبرنا بها!",
+    "Send Message" => "إرسال الرسالة",
+    "How can we help you?" => "كيف يمكننا مساعدتك؟",
+    "I think Safe Haven should add..." => "أعتقد أنه يجب على الملاذ الآمن إضافة...",
+    "Complete daily tasks to earn points and improve your wellness journey!" => "أكمل المهام اليومية لكسب النقاط وتحسين رحلة عافيتك!",
+    "View All Challenges" => "عرض جميع التحديات",
+    "How do you feel right now?" => "كيف تشعر في هذه اللحظة؟",
+    "Therapist proposed a new time:" => "اقترح المعالج وقتاً جديداً:",
+    "Session Cancelled" => "تم إلغاء الجلسة",
+    "Your upcoming session with" => "جلستك القادمة مع",
+    "has been cancelled by the therapist." => "تم إلغاؤها من قبل المعالج.",
+    "The full session amount has been refunded to your wallet." => "تمت إعادة مبلغ الجلسة بالكامل إلى محفظتك.",
+    "Acknowledge Cancellation" => "تأكيد العلم بالإلغاء",
+    "Admin and maintenance utilities consolidated into a single control panel." => "تم دمج المسؤول وأدوات الصيانة في لوحة تحكم واحدة.",
+    "Global Collation Fix" => "إصلاح الترميز العام للبيانات",
+    "Standardizes all database tables to" => "يوحد جميع جداول قاعدة البيانات إلى",
+    "to avoid encoding and sorting errors across fields." => "لتجنب أخطاء الترميز والفرز عبر الحقول.",
+    "Run Collation Fix" => "تشغيل إصلاح الترميز",
+    "Alter Resource Table" => "تعديل جدول الموارد",
+    "Appends the missing" => "يلحق المفقود",
+    "url" => "رابط المورد",
+    "column to the resource table structure so document links render correctly." => "عمود إلى هيكل جدول الموارد لتظهر روابط المستندات بشكل صحيح.",
+    "Alter User Table" => "تعديل جدول المستخدمين",
+    "Adds the" => "يضيف الـ",
+    "status" => "الحالة",
+    "column to the main User table to support therapist approval and ban features." => "عمود إلى جدول المستخدمين الرئيسي لدعم ميزات الموافقة على المعالج والحظر.",
+    "Clean Bad Resources" => "تنظيف الموارد الخاطئة",
+    "Deletes invalid or corrupted rows from the resource table that do not match default resource indexes." => "يحذف الصفوف غير الصالحة أو التالفة من جدول الموارد التي لا تطابق فهارس الموارد الافتراضية.",
+    "Clean Resource Table" => "تنظيف جدول الموارد",
+    "Standardize PDFs" => "توحيد ملفات PDF",
+    "Updates outdated local file paths inside the resource table with correct platform assets urls." => "يحدث مسارات الملفات المحلية القديمة داخل جدول الموارد مع روابط أصول المنصة الصحيحة."
+];
+
+// Merge and save
+foreach ($roundTranslations as $key => $val) {
+    $normKey = trim($key);
+    $arTranslations[$normKey] = $val;
+}
+
+// Format nicely and write back to messages/ar.json
+file_put_contents($arJsonPath, json_encode($arTranslations, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+echo "Successfully merged " . count($roundTranslations) . " final round translations into ar.json.\n";

@@ -1,0 +1,214 @@
+:root {
+    /* Pixel-Perfect Color Palette */
+    --bg-page: #f6fbfa;
+    --card-bg: #ffffff;
+    --card-border: #dbe8dd;
+    
+    --text-title: #1a3f2e;       /* Dark green for headers & labels */
+    --text-subtitle: #618270;    /* Muted green for subtitles */
+    
+    --btn-bg: #94b1a1;           /* Muted sage green */
+    --btn-hover: #7b998a;
+    
+    --input-bg-email: #eef3fc;   /* Slight blue-grey tint */
+    --input-border-email: #dae5f5;
+    
+    --input-bg-pass: #eaf2ec;    /* Slight green tint */
+    --input-border-pass: #d4e3d7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+.auth-page-wrapper {
+    background-color: var(--bg-page);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 60px 0;
+}
+
+/* Main Container */
+.auth-card-container {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 40px 32px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    margin: 20px;
+}
+
+/* Logo Configuration */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.logo-box {
+    width: 64px;
+    height: 64px;
+    background-color: #f1f6f1;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Typography */
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-title);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: var(--text-subtitle);
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+/* Form Layout */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-title);
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Input specific configurations */
+.input-icon {
+    position: absolute;
+    left: 16px;
+    color: var(--text-subtitle);
+    display: flex;
+    align-items: center;
+}
+
+.input-field {
+    width: 100%;
+    padding: 13px 16px 13px 46px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-title);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-field::placeholder {
+    color: #9cb0a4;
+}
+
+/* Color variations based on the image */
+.input-email {
+    background-color: var(--input-bg-email);
+    border: 1px solid var(--input-border-email);
+}
+.input-email:focus { border-color: #aebce3; }
+
+.input-password {
+    background-color: var(--input-bg-pass);
+    border: 1px solid var(--input-border-pass);
+}
+.input-password:focus { border-color: #a4beaa; }
+
+.toggle-password {
+    position: absolute;
+    right: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-subtitle);
+    display: flex;
+    align-items: center;
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--btn-bg);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    margin-top: 10px;
+}
+
+.submit-btn:hover { background-color: var(--btn-hover); }
+.submit-btn:active { transform: scale(0.98); }
+
+/* Sign up redirect text */
+.signup-text {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 14.5px;
+    color: var(--text-subtitle);
+    font-weight: 400;
+}
+
+.signup-text a {
+    color: #1e8354;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.signup-text a:hover { text-decoration: underline; }
+
+/* Responsiveness */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 30px 20px;
+        margin: 10px;
+        border-radius: 12px;
+    }
+    .title {
+        font-size: 28px;
+    }
+}
+
+/* ==== RTL Layout overrides for Volunteer Portal ==== */
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] * {
+    font-family: 'Tajawal', sans-serif !important;
+}
+
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+    text-align: right;
+    direction: rtl;
+}
+
+[dir="rtl"] .fa-arrow-left::before { content: "\f061"; }
+[dir="rtl"] .fa-arrow-right::before { content: "\f060"; }

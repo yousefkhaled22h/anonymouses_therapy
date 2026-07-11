@@ -1,0 +1,276 @@
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+        @media (max-width: 800px) {
+            .dashboard-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        body {
+            background-color: #EAF2EC;
+            font-family: 'Outfit', sans-serif;
+            color: #081C15;
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+        /* CUSTOM STAT CARDS */
+        .custom-stat-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(45, 106, 79, 0.02);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 140px;
+            transition: all 0.3s ease;
+        }
+
+        .custom-stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(45, 106, 79, 0.05);
+        }
+
+        .stat-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .stat-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #40916C;
+        }
+
+        .green-icon {
+            color: #2D6A4F;
+        }
+
+        .stat-value-large {
+            font-size: 32px;
+            font-weight: 700;
+            color: #081C15;
+        }
+
+        /* MAIN CONTENT CARDS */
+        .main-content-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(45, 106, 79, 0.02);
+            min-height: 480px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .main-content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(45, 106, 79, 0.03);
+        }
+
+        .main-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #081C15;
+            margin: 0 0 4px 0;
+        }
+
+        .main-subtitle {
+            font-size: 15px;
+            color: #2D6A4F;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* SESSION LIST */
+        .session-card {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid #D8F3DC;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            gap: 20px;
+            transition: all 0.2s;
+        }
+
+        .session-card:hover {
+            border-color: #2D6A4F;
+            box-shadow: 0 4px 12px rgba(45, 106, 79, 0.05);
+        }
+
+        .session-icon-circle {
+            width: 48px;
+            height: 48px;
+            background: #F4F9F5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2D6A4F;
+            flex-shrink: 0;
+        }
+
+        .session-details {
+            flex-grow: 1;
+        }
+
+        .session-topic {
+            font-size: 17px;
+            font-weight: 700;
+            color: #081C15;
+            margin-bottom: 2px;
+        }
+
+        .session-date-row {
+            font-size: 14px;
+            color: #40916C;
+            font-weight: 500;
+        }
+
+        .session-participants {
+            font-size: 13px;
+            color: #2D6A4F;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .btn-join-session {
+            background: #2D6A4F;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .btn-join-session:hover {
+            background: #1B4332;
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        /* QUICK ACTIONS BOX */
+        .quick-actions-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-action {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .btn-action.solid {
+            background: #2D6A4F;
+            color: #ffffff;
+        }
+
+        .btn-action.solid:hover {
+            background: #1B4332;
+        }
+
+        .btn-action.light {
+            background: #F4F9F5;
+            color: #2D6A4F;
+            border: 1px solid #D8F3DC;
+        }
+
+        .btn-action.light:hover {
+            background: #D8F3DC;
+        }
+
+        .empty-state-card {
+            padding: 60px 20px;
+            text-align: center;
+            color: #40916C;
+            background: #EAF2EC;
+            border-radius: 16px;
+            border: 1px dashed #D8F3DC;
+        }
+
+        @media (max-width: 992px) {
+            .main-content-card {
+                margin-bottom: 24px;
+                min-height: auto;
+            }
+        }
+
+        /* Responsiveness Extended */
+        @media (max-width: 768px) {
+            .stat-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .stat-value-large {
+                font-size: 28px;
+            }
+            .session-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            .btn-join-session {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+/* ==== RTL Layout overrides for Volunteer Portal ==== */
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] body {
+    font-family: 'Tajawal', sans-serif !important;
+}
+
+[dir="rtl"] .dashboard-layout {
+    direction: rtl;
+}
+
+[dir="rtl"] .custom-stat-card {
+    text-align: right;
+}
+
+[dir="rtl"] .stat-top {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] th, [dir="rtl"] td {
+    text-align: right;
+}
+
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+    text-align: right;
+    direction: rtl;
+}

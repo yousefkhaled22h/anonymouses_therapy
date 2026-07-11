@@ -1,0 +1,352 @@
+:root {
+    --calm-blue: #e0f2fe;
+    --calm-green: #dcfce7;
+    --calm-purple: #f3e8ff;
+    --calm-text: #334155;
+    --accent-primary: #A68A6C;
+}
+
+.games-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    font-family: 'Inter', sans-serif;
+    color: var(--calm-text);
+}
+
+.mood-prompt-card {
+    background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+    transition: all 0.5s ease;
+}
+
+.mood-prompt-card h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #5a3e28;
+}
+
+.mood-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.mood-btn {
+    background: white;
+    border: 2px solid transparent;
+    padding: 15px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.mood-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    border-color: var(--accent-primary);
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+
+.game-grid.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.game-card {
+    background: white;
+    border-radius: 24px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.game-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.game-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #1e293b;
+}
+
+.game-card p {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.btn-play {
+    background: var(--accent-primary);
+    color: white;
+    padding: 12px 35px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+/* Fullscreen Game Overlay */
+.game-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.close-game {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #64748b;
+    transition: color 0.2s;
+    z-index: 100;
+}
+
+.close-game:hover {
+    color: #ef4444;
+}
+
+/* Breathing Game Styles */
+#breathing-circle {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, #bae6fd 0%, #38bdf8 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 4s ease-in-out;
+    box-shadow: 0 0 50px rgba(56, 189, 248, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+#breath-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0369a1;
+    margin: 0;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+/* Ensure the overlay title is also on top */
+.game-overlay h2 {
+    position: relative;
+    z-index: 10;
+}
+
+/* Thought Catch Styles */
+#thought-canvas {
+    width: 100%;
+    height: 80vh;
+    position: relative;
+    overflow: hidden;
+    background: #f8fafc;
+    border-radius: 24px;
+}
+
+.thought-bubble {
+    position: absolute;
+    background: white;
+    padding: 20px;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s;
+    max-width: 200px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+}
+
+.thought-bubble:hover {
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+/* Safe Space Styles */
+#safe-space-builder {
+    width: 100%;
+    height: 70vh;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.item-library {
+    background: white;
+    border-radius: 16px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    overflow-y: auto;
+}
+
+.safe-area {
+    background: #f0fdf4;
+    border-radius: 24px;
+    position: relative;
+    border: 2px dashed #bbf7d0;
+    overflow: hidden;
+}
+
+.library-item {
+    font-size: 2rem;
+    padding: 10px;
+    cursor: grab;
+    text-align: center;
+    border: 1px solid #f1f5f9;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background: #fff;
+}
+
+/* Grounding Game Styles */
+.grounding-step {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 600px;
+    animation: fadeIn 0.5s ease;
+}
+
+.grounding-step.active {
+    display: flex;
+}
+
+.grounding-number {
+    font-size: 5rem;
+    font-weight: 800;
+    color: var(--accent-primary);
+    opacity: 0.3;
+    margin-bottom: -20px;
+}
+
+.grounding-instruction {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.grounding-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.grounding-input {
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    outline: none;
+    font-size: 1rem;
+}
+
+.grounding-input:focus {
+    border-color: var(--accent-primary);
+}
+
+/* Coloring Game Styles */
+#coloring-container {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    gap: 20px;
+}
+
+.palette {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.color-swatch {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: transform 0.2s;
+}
+
+.color-swatch.active {
+    border-color: var(--accent-primary);
+    transform: scale(1.1);
+}
+
+.mandala-svg {
+    flex: 1;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    padding: 20px;
+}
+
+.mandala-svg path {
+    fill: #ffffff;
+    stroke: #334155;
+    stroke-width: 0.5;
+    cursor: pointer;
+    transition: fill 0.5s ease;
+}
+
+/* Endless Flow Styles */
+#flow-canvas {
+    width: 100%;
+    height: 80vh;
+    background: linear-gradient(to bottom, #f0fdf4, #dcfce7);
+    border-radius: 24px;
+    cursor: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

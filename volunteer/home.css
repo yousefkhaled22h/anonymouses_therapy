@@ -1,0 +1,415 @@
+/* Reset & Basics */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #1F2937;
+    background-color: #F3F4F6;
+    overflow-x: hidden;
+}
+
+/* Header & Search Wrapper */
+.top-wrapper {
+    background-color: #FFFFFF;
+    position: relative;
+    z-index: 10;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    padding: 16px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 24px;
+    color: #0033A0; /* Trust blue similar to CarMax logo */
+    letter-spacing: -0.5px;
+    margin-right: 48px;
+    font-weight: 400;
+}
+
+.logo strong {
+    font-weight: 800;
+}
+
+.main-nav {
+    display: flex;
+    gap: 32px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #4B5563;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.main-nav a:hover {
+    color: #0033A0;
+}
+
+.nav-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.user-location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #4B5563;
+    cursor: pointer;
+}
+
+.user-location div {
+    display: flex;
+    flex-direction: column;
+}
+
+.small-text {
+    font-size: 11px;
+    color: #6B7280;
+}
+
+.bold-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.icon-btn {
+    color: #4B5563;
+    transition: color 0.2s;
+    display: flex;
+}
+
+.icon-btn:hover {
+    color: #111827;
+}
+
+/* Search Container */
+.search-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px 16px 40px;
+}
+
+.search-box {
+    display: flex;
+    border: 1px solid #D1D5DB;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #FFFFFF;
+}
+
+.search-box input {
+    flex-grow: 1;
+    padding: 16px 20px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.search-box input::placeholder {
+    color: #9CA3AF;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    color: #4B5563;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    padding: 100px 80px;
+}
+
+/* Overlay for text readability */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    color: #FFFFFF;
+}
+
+.hero-content h1 {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+}
+
+.hero-content p {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #FFD24F; /* Vibrant yellow */
+    color: #111827;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 16px 32px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    letter-spacing: 0.5px;
+}
+
+.cta-button:hover {
+    background-color: #F8C325;
+}
+
+/* Floating Bottom Card */
+.floating-card {
+    position: absolute;
+    bottom: -30px; /* Overlaps bottom edge */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FFFFFF;
+    padding: 30px 60px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 10;
+    text-align: center;
+    width: 60%;
+    min-width: 400px;
+}
+
+.floating-card h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1F2937;
+}
+
+/* Chat Button */
+.chat-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: #0056D2; /* Chat blue */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 100;
+    transition: transform 0.2s;
+}
+
+.chat-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Profile Dropdown */
+.profile-dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-trigger {
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+}
+
+.profile-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    width: 250px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: none; /* hidden by default */
+    flex-direction: column;
+    z-index: 1000;
+    border: 1px solid #E5E7EB;
+    padding: 8px 0;
+}
+
+/* Add an invisible hover bridge so mouse doesn't lose hover */
+.profile-dropdown-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    height: 10px;
+}
+
+.profile-dropdown-wrapper:hover .profile-dropdown-menu {
+    display: flex;
+}
+
+.dropdown-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #111827;
+}
+
+.dropdown-header:hover {
+    background-color: #F9FAFB;
+}
+
+.avatar-small {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #E2E8F0;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    margin-right: 12px;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-details .username {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: #E5E7EB;
+    margin: 8px 20px;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #4B5563;
+    font-size: 13.5px;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-item:hover {
+    background-color: #F9FAFB;
+    color: #111827;
+}
+
+.dp-icon-wrapper {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    background-color: #F1F5F9;
+    color: #64748B;
+}
+
+/* Matching image style */
+.dp-text {
+    flex-grow: 1;
+}
+
+.chevron {
+    color: #9CA3AF;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        padding: 16px 20px;
+        gap: 16px;
+    }
+    .main-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 16px;
+    }
+    .nav-right {
+        margin-left: 0;
+        justify-content: center;
+        width: 100%;
+        gap: 16px;
+    }
+    .search-container {
+        padding: 0 20px 16px 20px;
+    }
+    .hero {
+        padding: 60px 20px;
+        height: auto;
+        min-height: 500px;
+    }
+    .hero-content h1 {
+        font-size: 40px;
+    }
+    .floating-card {
+        width: 90%;
+        min-width: unset;
+        padding: 20px;
+        bottom: -40px;
+    }
+    .profile-dropdown-menu {
+        right: 50%;
+        transform: translateX(50%);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 32px;
+    }
+    .hero-content p {
+        font-size: 16px;
+    }
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+    .logo {
+        margin-right: 0;
+    }
+}

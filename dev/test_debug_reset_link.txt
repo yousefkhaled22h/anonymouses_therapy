@@ -1,0 +1,4 @@
+LATEST RESET LINK GOES HERE:
+http://localhost/test2/reset_password.php?token=6e0c5de1b082fe611069314cf62238fbec6c394e89445d7b1315006204c60abd
+
+(This file was created because your XAMPP could not send the real email via SMTP)

@@ -1,0 +1,251 @@
+/* Reset & Basics */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #E6F7ED; /* Light mint green matching the UI */
+    color: #1F2937;
+    line-height: 1.5;
+}
+
+.library-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Header Section */
+.library-header {
+    margin-bottom: 24px;
+}
+
+.library-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.library-header p {
+    font-size: 16px;
+    color: #4B5563;
+}
+
+/* Controls (Search and Filters) */
+.controls-section {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.search-box {
+    position: relative;
+    flex-grow: 1;
+    max-width: 450px;
+}
+
+.search-box svg {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9CA3AF;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 14px 12px 42px;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    outline: none;
+    font-size: 15px;
+    font-family: inherit;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.filter-pills {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.pill {
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    color: #1F2937;
+    transition: all 0.2s;
+}
+
+.pill:hover:not(.active) {
+    opacity: 0.8;
+}
+
+.pill.active {
+    background-color: #212121;
+    color: white;
+}
+
+/* Grid Layout */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+/* Individual Card */
+.resource-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+}
+
+/* Colored Top Borders */
+.resource-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.resource-card.border-red::before { background-color: #F87171; }
+.resource-card.border-blue::before { background-color: #60A5FA; }
+.resource-card.border-gray::before { background-color: #9CA3AF; }
+.resource-card.border-green::before { background-color: #34D399; }
+.resource-card.border-purple::before { background-color: #A78BFA; }
+
+/* Card Internals */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    margin-top: 8px; /* Room for the border */
+}
+
+.category-tag {
+    font-size: 11px;
+    background-color: #F9FAFB;
+    padding: 4px 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #4B5563;
+    border: 1px solid #F3F4F6;
+}
+
+.card-actions {
+    display: flex;
+    gap: 12px;
+    color: #9CA3AF;
+}
+
+.card-actions svg {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.card-actions svg:hover {
+    color: #4B5563;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #111827;
+}
+
+.card-meta {
+    font-size: 14px;
+    color: #6B7280;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.card-desc {
+    font-size: 15px;
+    color: #4B5563;
+    flex-grow: 1;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Footer (Meta & Action) */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.file-info {
+    font-size: 14px;
+    color: #6B7280;
+    font-weight: 500;
+}
+
+.btn-action {
+    background-color: #212121; /* Almost black */
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-action:hover {
+    background-color: #374151;
+}
+
+.btn-action svg {
+    stroke-width: 2.5px;
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+    .controls-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .search-box {
+        max-width: 100%;
+    }
+    .filter-pills {
+        justify-content: center;
+    }
+    .card-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    .btn-action {
+        justify-content: center;
+    }
+}
